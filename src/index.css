@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+:root {
+  /* Cores originais + tema diamante */
+  --primary-color: #0066cc;
+  --secondary-color: #242424;
+  --gold-accent: #d4af37;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+  --diamond-primary: #e6f7ff;
+  --diamond-accent: #b3e0ff;
+  --diamond-highlight: #66c2ff;
+  --diamond-dark: #003366;
+  --diamond-shadow: rgba(102, 194, 255, 0.5);
+
+  /* Espaçamentos */
+  --base-padding: 1rem;
+  --base-margin: 1rem;
+  --base-border-radius: 4px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Corpo principal com tema diamante */
+body {
+  font-family: 'Playfair Display', serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: var(--diamond-primary);
+  background-color: #000814;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background estelar fixo */
+.stars-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: 
+    radial-gradient(ellipse at bottom, #001a33 0%, #000814 100%),
+    radial-gradient(var(--diamond-primary) 1px, transparent 1px);
+  background-size: 100% 100%, 50px 50px;
+}
+
+/* Animação de estrelas cadentes */
+@keyframes shootingStar {
+  0% { transform: translateX(0) translateY(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateX(100vw) translateY(100vh); opacity: 0; }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--diamond-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 1px rgba(179, 224, 255, 0.8);
+  opacity: 0;
+  animation: shootingStar linear infinite;
+}
+
+/* Brilho diamante */
+@keyframes diamondGlow {
+  0%, 100% { text-shadow: 0 0 10px var(--diamond-shadow); }
+  50% { text-shadow: 0 0 20px var(--diamond-highlight); }
+}
+
+/* Tipografia */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+  margin-bottom: var(--base-margin);
+}
+
+p {
+  margin-bottom: var(--base-margin);
+}
+
+/* Links com efeito diamante */
+a {
+  color: var(--diamond-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--diamond-highlight);
+  text-shadow: 0 0 8px var(--diamond-shadow);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--diamond-accent), transparent);
+  transition: width 0.3s ease-out;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Botões */
+button {
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: var(--base-border-radius);
+  transition: all 0.3s ease;
+  background: transparent;
+  color: var(--diamond-primary);
+  border: 1px solid var(--diamond-accent);
+}
+
+button:hover {
+  background: rgba(179, 224, 255, 0.1);
+  box-shadow: 0 0 10px var(--diamond-shadow);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--diamond-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--diamond-accent);
+  border-radius: 4px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  :root {
+    --base-padding: 0.75rem;
+    --base-margin: 0.75rem;
+  }
+  
+  body {
+    font-size: 14px;
+  }
+
+  a::after {
+    height: 0.5px;
+  }
+}
+@keyframes diamondPulse {
+  0%, 100% {
+    opacity: 0.95;
+    text-shadow: 0 0 15px rgba(102, 194, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 25px rgba(102, 194, 255, 0.6);
+  }
+}

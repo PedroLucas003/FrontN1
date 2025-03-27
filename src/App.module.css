@@ -1,0 +1,90 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  z-index: 100;
+  background-color: transparent;
+}
+
+.logo {
+  font-family: 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  letter-spacing: 0.5rem;
+  color: var(--diamond-primary);
+  text-shadow: 0 0 15px rgba(102, 194, 255, 0.5);
+  margin: 0;
+  text-transform: uppercase;
+  animation: diamondGlow 4s ease-in-out infinite;
+}
+
+@keyframes diamondGlow {
+  0%, 100% { text-shadow: 0 0 10px rgba(179, 224, 255, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(102, 194, 255, 0.8); }
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.navLink {
+  color: var(--diamond-primary);
+  text-decoration: none;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  letter-spacing: 0.2rem;
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: all 0.4s ease-out;
+}
+
+.navLink:hover {
+  color: var(--diamond-highlight);
+  transform: translateY(-3px);
+  text-shadow: 0 0 10px rgba(102, 194, 255, 0.7);
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--diamond-accent), transparent);
+  transition: width 0.3s ease-out;
+}
+
+.navLink:hover::before {
+  width: 70%;
+}
+
+.mainContent {
+  position: relative;
+  padding-top: 180px;
+  min-height: 100vh;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .nav {
+    gap: 1rem;
+  }
+  
+  .mainContent {
+    padding-top: 150px;
+  }
+}
