@@ -1,3 +1,40 @@
+# 🕰️ Luxury Timepieces  
+
+Um site moderno e elegante para a Luxury Timepieces, especializado em relógios de luxo.  
+
+🔗 **Acesse o projeto:** [Luxury Timepieces na Vercel]((https://front-n1-ysbv.vercel.app))  
+
+---
+
+## 🚀 Tecnologias Utilizadas  
+- **React.js** ⚛️  
+- **CSS Modules** 🎨  
+- **React Icons** 🔥  
+- **Vercel** 🌎  
+
+---
+
+## 📥 Como Rodar Localmente  
+
+1. **Clone o repositório**  
+  
+
+
+- **Inicie o projeto**
+
+- - npm install
+  - - npm run dev
+
+
+
+
+
+
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
