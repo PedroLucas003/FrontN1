@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import StarsBackground from './components/StarsBackground';
 import Home from './pages/Home/Home';
 import Collection from './pages/Collection/Collection';
@@ -17,7 +17,6 @@ function App() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Calcula a opacidade e transformação baseadas no scroll
       const opacity = Math.max(0, 1 - currentScrollY / 150);
       const translateY = Math.min(30, currentScrollY / 5);
       
@@ -39,7 +38,10 @@ function App() {
     letterSpacing: '0.2rem',
     position: 'relative',
     padding: '0.5rem 1rem',
-    transition: 'all 0.4s ease-out'
+    transition: 'all 0.4s ease-out',
+    ':hover': {
+      color: '#66c2ff'
+    }
   };
 
   return (
@@ -98,10 +100,10 @@ function App() {
           flexWrap: 'wrap',
           justifyContent: 'center'
         }}>
-          <a href="/" style={navLinkStyle}>Home</a>
-          <a href="/collection" style={navLinkStyle}>Coleção</a>
-          <a href="/about" style={navLinkStyle}>Sobre</a>
-          <a href="/contact" style={navLinkStyle}>Contato</a>
+          <Link to="/" style={navLinkStyle}>Home</Link>
+          <Link to="/collection" style={navLinkStyle}>Coleção</Link>
+          <Link to="/about" style={navLinkStyle}>Sobre</Link>
+          <Link to="/contact" style={navLinkStyle}>Contato</Link>
         </nav>
       </header>
       

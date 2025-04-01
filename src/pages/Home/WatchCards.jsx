@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './WatchCards.css';
 
 const WatchCards = () => {
+  const [cart, setCart] = useState([]);
+  const [showCartNotification, setShowCartNotification] = useState(false);
+
   const watches = [
     {
       id: 1,
@@ -25,7 +28,7 @@ const WatchCards = () => {
       id: 4,
       name: 'Moonphase Elite',
       price: 'R$ 18.700',
-       image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
     },
     {
       id: 5,
@@ -77,8 +80,40 @@ const WatchCards = () => {
     }
   ];
 
+  const addToCart = (watch, e) => {
+    e.preventDefault();
+    setCart(prevCart => {
+      const existingItem = prevCart.find(item => item.id === watch.id);
+      if (existingItem) {
+        return prevCart.map(item =>
+          item.id === watch.id 
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prevCart, { ...watch, quantity: 1 }];
+    });
+    setShowCartNotification(true);
+    setTimeout(() => setShowCartNotification(false), 3000);
+  };
+
   return (
     <section className="watches-section">
+      {/* Notificação do Carrinho */}
+      {showCartNotification && (
+        <div className="cart-notification">
+          <p>Item adicionado ao carrinho!</p>
+          <div className="cart-preview">
+            {cart.map(item => (
+              <div key={item.id} className="cart-item">
+                <span>{item.name}</span>
+                <span>Qtd: {item.quantity}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="watches-row">
         {watches.map(watch => (
           <div key={watch.id} className="watch-col">
@@ -90,7 +125,7 @@ const WatchCards = () => {
                 <h1>{watch.name}</h1>
                 <span className="watch-price">{watch.price}</span>
                 <div className="watch-card-back">
-                  <a href="#">Add to cart</a>
+                  <a href="#" onClick={(e) => addToCart(watch, e)}>Add to cart</a>
                   <a href="#">View details</a>
                 </div>
               </div>

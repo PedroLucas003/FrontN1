@@ -1,112 +1,52 @@
 import React from 'react';
+import styles from './Contact.module.css';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock as FaBusinessHours } from 'react-icons/fa';
 
 const Contact = () => {
   return (
-    <div style={{
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: '2rem',
-      color: 'white',
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: '4rem',
-      fontFamily: "'Helvetica Neue', sans-serif"
-    }}>
+    <div className={styles.contactContainer}>
       <section>
-        <h2 style={{
-          fontSize: '2.8rem',
-          marginBottom: '2.5rem',
-          background: 'linear-gradient(90deg, #e6f7ff, #66c2ff)',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
-          color: 'transparent',
-          fontWeight: 300,
-          letterSpacing: '0.1em'
-        }}>
-          Fale Conosco
-        </h2>
+        <h2 className={styles.contactTitle}>Fale Conosco</h2>
         
-        <div style={{ 
-          marginBottom: '3rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2rem'
-        }}>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <div style={{ color: '#66c2ff', fontSize: '1.5rem' }}>
-              <FaMapMarkerAlt />
-            </div>
+        <div className={styles.contactSection}>
+          <div className={styles.contactInfo}>
+            <div className={styles.contactIcon}><FaMapMarkerAlt /></div>
             <div>
-              <h3 style={{ 
-                fontSize: '1.3rem',
-                marginBottom: '0.5rem',
-                color: '#b3e0ff'
-              }}>Nosso Ateliê</h3>
-              <p style={{ 
-                lineHeight: '1.6',
-                color: 'rgba(255,255,255,0.85)'
-              }}>
+              <h3>Nosso Ateliê</h3>
+              <p className={styles.contactDetails}>
                 Boa Viagem, 1000 - 15º andar<br/>
                 Recife - PE, 01310-100
               </p>
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <div style={{ color: '#66c2ff', fontSize: '1.5rem' }}>
-              <FaPhone />
-            </div>
+          <div className={styles.contactInfo}>
+            <div className={styles.contactIcon}><FaPhone /></div>
             <div>
-              <h3 style={{ 
-                fontSize: '1.3rem',
-                marginBottom: '0.5rem',
-                color: '#b3e0ff'
-              }}>Telefone</h3>
-              <p style={{ 
-                lineHeight: '1.6',
-                color: 'rgba(255,255,255,0.85)'
-              }}>
+              <h3>Telefone</h3>
+              <p className={styles.contactDetails}>
                 +55 (11) 1234-5678<br/>
                 Seg-Sex: 9h às 18h
               </p>
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <div style={{ color: '#66c2ff', fontSize: '1.5rem' }}>
-              <FaEnvelope />
-            </div>
+          <div className={styles.contactInfo}>
+            <div className={styles.contactIcon}><FaEnvelope /></div>
             <div>
-              <h3 style={{ 
-                fontSize: '1.3rem',
-                marginBottom: '0.5rem',
-                color: '#b3e0ff'
-              }}>Email</h3>
-              <p style={{ 
-                lineHeight: '1.6',
-                color: 'rgba(255,255,255,0.85)'
-              }}>
+              <h3>Email</h3>
+              <p className={styles.contactDetails}>
                 contato@luxurytimepieces.com<br/>
                 atendimento@luxurytimepieces.com
               </p>
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <div style={{ color: '#66c2ff', fontSize: '1.5rem' }}>
-              <FaBusinessHours />
-            </div>
+          <div className={styles.contactInfo}>
+            <div className={styles.contactIcon}><FaBusinessHours /></div>
             <div>
-              <h3 style={{ 
-                fontSize: '1.3rem',
-                marginBottom: '0.5rem',
-                color: '#b3e0ff'
-              }}>Horário Comercial</h3>
-              <p style={{ 
-                lineHeight: '1.6',
-                color: 'rgba(255,255,255,0.85)'
-              }}>
+              <h3>Horário Comercial</h3>
+              <p className={styles.contactDetails}>
                 Segunda a Sexta: 9h - 18h<br/>
                 Sábado: 10h - 14h<br/>
                 Domingo: Fechado
@@ -117,106 +57,24 @@ const Contact = () => {
       </section>
       
       <section>
-        <h3 style={{
-          fontSize: '1.8rem',
-          marginBottom: '2rem',
-          color: '#b3e0ff',
-          fontWeight: 400
-        }}>
-          Envie sua Mensagem
-        </h3>
-        <form style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          gap: '1.5rem'
-        }}>
+        <h3 className={styles.contactTitle}>Envie sua Mensagem</h3>
+        <form className={styles.contactForm}>
           <div>
-            <label htmlFor="name" style={{
-              display: 'block',
-              marginBottom: '0.5rem',
-              color: 'rgba(255,255,255,0.8)'
-            }}>Nome Completo</label>
-            <input
-              id="name"
-              type="text"
-              required
-              style={{
-                width: '100%',
-                padding: '0.8rem 1rem',
-                background: 'rgba(10, 25, 47, 0.5)',
-                border: '1px solid rgba(102, 194, 255, 0.3)',
-                borderRadius: '4px',
-                color: 'white',
-                fontSize: '1rem',
-                transition: 'all 0.3s ease'
-              }}
-            />
+            <label htmlFor="name">Nome Completo</label>
+            <input id="name" type="text" required className={styles.contactInput} />
           </div>
           
           <div>
-            <label htmlFor="email" style={{
-              display: 'block',
-              marginBottom: '0.5rem',
-              color: 'rgba(255,255,255,0.8)'
-            }}>Email</label>
-            <input
-              id="email"
-              type="email"
-              required
-              style={{
-                width: '100%',
-                padding: '0.8rem 1rem',
-                background: 'rgba(10, 25, 47, 0.5)',
-                border: '1px solid rgba(102, 194, 255, 0.3)',
-                borderRadius: '4px',
-                color: 'white',
-                fontSize: '1rem',
-                transition: 'all 0.3s ease'
-              }}
-            />
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" required className={styles.contactInput} />
           </div>
           
           <div>
-            <label htmlFor="message" style={{
-              display: 'block',
-              marginBottom: '0.5rem',
-              color: 'rgba(255,255,255,0.8)'
-            }}>Mensagem</label>
-            <textarea
-              id="message"
-              rows="5"
-              required
-              style={{
-                width: '100%',
-                padding: '0.8rem 1rem',
-                background: 'rgba(10, 25, 47, 0.5)',
-                border: '1px solid rgba(102, 194, 255, 0.3)',
-                borderRadius: '4px',
-                color: 'white',
-                fontSize: '1rem',
-                transition: 'all 0.3s ease',
-                resize: 'vertical'
-              }}
-            ></textarea>
+            <label htmlFor="message">Mensagem</label>
+            <textarea id="message" rows="5" required className={styles.contactTextarea}></textarea>
           </div>
           
-          <button
-            type="submit"
-            style={{
-              background: 'linear-gradient(90deg, #e6f7ff, #66c2ff)',
-              color: '#0a192f',
-              padding: '1rem',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontWeight: 500,
-              fontSize: '1rem',
-              transition: 'all 0.3s ease',
-              marginTop: '1rem'
-            }}
-          >
-            Enviar Mensagem
-          </button>
+          <button type="submit" className={styles.contactButton}>Enviar Mensagem</button>
         </form>
       </section>
     </div>
