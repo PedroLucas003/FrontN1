@@ -1,0 +1,269 @@
+.collectionPage {
+  --primary-color: #1a1a2e;
+  --secondary-color: #16213e;
+  --accent-color: #0f3460;
+  --text-color: #e6e6e6;
+  --highlight-color: #00b4d8;
+  --card-bg: #112240;
+  --transition: all 0.3s ease;
+  
+  color: var(--text-color);
+  background: var(--primary-color);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)),
+              url('https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroContent {
+  text-align: center;
+  padding: 0 2rem;
+  max-width: 1200px;
+  position: relative;
+  z-index: 2;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.2s forwards;
+  opacity: 0;
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.arrowDown {
+  width: 24px;
+  height: 24px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  animation: bounce 1.5s infinite;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(45deg);
+  }
+  40% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  60% {
+    transform: translateY(-5px) rotate(45deg);
+  }
+}
+
+/* ===== NOVO LAYOUT ===== */
+
+.collectionContent {
+  padding: 2rem 0;
+}
+
+/* Categorias no Background */
+.categorySection {
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.categoryHeader {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.categoryTitle {
+  font-size: 5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.03);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  line-height: 1;
+  margin-top: -1.5rem;
+  user-select: none;
+}
+
+/* Container dos Cards */
+.watchesContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow-x: auto;
+  padding: 4rem 0 2rem;
+}
+
+.watchesGrid {
+  display: inline-flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  min-width: 100%;
+}
+
+/* Cards */
+.watch-card {
+  flex: 0 0 320px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.watch-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--highlight-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.watch-image-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.watch-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.watch-card:hover .watch-image {
+  transform: scale(1.05);
+}
+
+.limited-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0, 180, 216, 0.2);
+  color: var(--highlight-color);
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  border: 1px solid var(--highlight-color);
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.watch-details {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.watch-name {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+  color: white;
+}
+
+.watch-price {
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+  font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .categoryTitle {
+    font-size: 4rem;
+  }
+  
+  .watch-card {
+    flex: 0 0 280px;
+  }
+}
+
+@media (max-width: 992px) {
+  .categoryTitle {
+    font-size: 3.5rem;
+    letter-spacing: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 500px;
+  }
+  
+  .categoryTitle {
+    font-size: 3rem;
+    margin-top: -1rem;
+  }
+  
+  .watchesGrid {
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+  
+  .watch-card {
+    flex: 0 0 260px;
+  }
+  
+  .watch-image-container {
+    height: 260px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+  
+  .categoryTitle {
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+  }
+  
+  .watchesGrid {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .watch-card {
+    flex: 0 0 240px;
+  }
+  
+  .watch-details {
+    padding: 1.2rem;
+  }
+}

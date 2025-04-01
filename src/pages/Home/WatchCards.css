@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&display=swap');
+
+:root {
+  --transition-time: 2.3s;
+}
+
+/* Main Section - Layout melhorado */
+.watches-section {
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Cards Grid - Posicionamento aprimorado */
+.watches-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+  justify-items: center; /* Centraliza os cards horizontalmente */
+}
+
+/* Individual Watch Column - Ajuste de largura */
+.watch-col {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 30px;
+}
+
+/* Card Container (mantido igual) */
+.watch-card {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  transition: ease all var(--transition-time);
+  perspective: 1200px;
+}
+
+/* Card Hover Effects (mantido igual) */
+.watch-card:hover .watch-cover {
+  transform: rotateX(0deg) rotateY(-180deg);
+}
+.watch-card:hover .watch-cover:before {
+  transform: translateZ(30px);
+}
+.watch-card:hover .watch-cover:after {
+  background-color: black;
+}
+.watch-card:hover .watch-cover h1 {
+  transform: translateZ(100px);
+}
+.watch-card:hover .watch-cover .watch-price {
+  transform: translateZ(60px);
+}
+.watch-card:hover .watch-cover .watch-card-back a {
+  transform: translateZ(-60px) rotatey(-180deg);
+}
+
+/* Card Front Face (mantido igual) */
+.watch-cover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: ease all var(--transition-time);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Card Border Effect (mantido igual) */
+.watch-cover:before {
+  content: '';
+  position: absolute;
+  border: 5px solid rgba(255,255,255,.5);
+  box-shadow: 0 0 12px rgba(0,0,0,.3); 
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  transition: ease all var(--transition-time);
+  transform-style: preserve-3d;
+  transform: translateZ(0px);
+}
+
+/* Card Overlay (mantido igual) */
+.watch-cover:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  transition: ease all 1.3s;
+  background: rgba(0,0,0,.4);
+}
+
+/* Watch Name (mantido igual) */
+.watch-cover h1 {
+  font-weight: 600;
+  position: absolute;
+  bottom: 55px;
+  left: 50px;
+  color: white;
+  transform-style: preserve-3d;
+  transition: ease all var(--transition-time);
+  z-index: 3;
+  font-size: 3em;
+  transform: translateZ(0px);
+  white-space: pre-line;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Watch Price (mantido igual) */
+.watch-cover .watch-price {
+  font-weight: 200;
+  position: absolute;
+  top: 55px;
+  right: 50px;
+  color: white;
+  transform-style: preserve-3d;
+  transition: ease all var(--transition-time);
+  z-index: 4;
+  font-size: 2em;
+  transform: translateZ(0px);
+}
+
+/* Card Back Face (mantido igual) */
+.watch-card-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #0b0f08;
+  transform-style: preserve-3d;
+  transition: ease all var(--transition-time);
+  transform: translateZ(-1px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Action Buttons (mantido igual) */
+.watch-card-back a {
+  transform-style: preserve-3d;
+  transition: ease transform var(--transition-time), ease background .5s;
+  transform: translateZ(-1px) rotatey(-180deg);
+  background: transparent;
+  border: 1px solid white;
+  font-weight: 200;
+  font-size: 1.3em;
+  color: white;
+  padding: 14px 32px;
+  outline: none;
+  text-decoration: none;
+  width: max-content;
+}
+.watch-card-back a:hover {
+  background-color: white;
+  color: #0b0f08;
+}
+
+/* Responsive Adjustments - Aprimorados */
+@media (max-width: 1200px) {
+  .watches-row {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .watches-row {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .watches-row {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  
+  .watch-cover h1 {
+    font-size: 2em;
+    bottom: 30px;
+    left: 30px;
+  }
+  
+  .watch-cover .watch-price {
+    font-size: 1.5em;
+    top: 30px;
+    right: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .watches-row {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .watch-col {
+    margin-bottom: 20px;
+  }
+}

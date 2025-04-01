@@ -88,3 +88,35 @@
     padding-top: 150px;
   }
 }
+/* Animações para os efeitos */
+@keyframes diamondPulse {
+  0%, 100% { 
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(102, 194, 255, 0.3); 
+  }
+  50% { 
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(102, 194, 255, 0.6); 
+  }
+}
+
+@keyframes flowAndPulse {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main {
+    padding-top: 150px;
+  }
+  
+  header {
+    padding: 1.5rem !important;
+    gap: 1.5rem !important;
+  }
+  
+  nav {
+    gap: 1rem !important;
+  }
+}

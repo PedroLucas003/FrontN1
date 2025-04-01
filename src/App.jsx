@@ -1,11 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StarsBackground from './components/StarsBackground';
+import Home from './pages/Home/Home';
+import Collection from './pages/Collection/Collection';
+import About from './pages/About/About';
+import Contact from './pages/Contact/Contact';
 
 function App() {
-  return (
-    <>
-      <StarsBackground />
+  const [headerStyle, setHeaderStyle] = useState({
+    opacity: 1,
+    transform: 'translateY(0)',
+    pointerEvents: 'auto'
+  });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Calcula a opacidade e transformação baseadas no scroll
+      const opacity = Math.max(0, 1 - currentScrollY / 150);
+      const translateY = Math.min(30, currentScrollY / 5);
+      
+      setHeaderStyle({
+        opacity: opacity,
+        transform: `translateY(-${translateY}px)`,
+        pointerEvents: opacity > 0.1 ? 'auto' : 'none'
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinkStyle = {
+    color: 'var(--diamond-primary)',
+    textDecoration: 'none',
+    fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+    letterSpacing: '0.2rem',
+    position: 'relative',
+    padding: '0.5rem 1rem',
+    transition: 'all 0.4s ease-out'
+  };
+
+  return (
+    <Router>
+      <StarsBackground />
+      
       <header style={{
         position: 'fixed',
         top: 0,
@@ -15,9 +55,10 @@ function App() {
         flexDirection: 'column',
         alignItems: 'center',
         gap: '2rem',
-        zIndex: 100
+        zIndex: 100,
+        transition: 'all 0.3s ease-out',
+        ...headerStyle
       }}>
-        {/* SUBSTITUA O NOME DA LOJA POR ISSO: */}
         <h1 style={{
           fontFamily: "'Cinzel', serif",
           fontSize: 'clamp(2rem, 6vw, 3rem)',
@@ -32,19 +73,22 @@ function App() {
           textTransform: 'uppercase',
           position: 'relative',
           display: 'inline-block',
-          paddingBottom: '0.5rem',
+          paddingBottom: '0.8rem',
           animation: 'diamondPulse 3s ease-in-out infinite'
         }}>
           LUXURY TIMEPIECES
           <span style={{
             position: 'absolute',
-            bottom: 0,
+            bottom: '2px',
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '50%',
+            width: '60%',
             height: '1px',
-            background: 'linear-gradient(to right, transparent, #66c2ff, transparent)',
-            boxShadow: '0 0 10px rgba(102, 194, 255, 0.5)'
+            background: 'linear-gradient(90deg, transparent, #e6f7ff, #b3e0ff, #66c2ff, #b3e0ff, #e6f7ff, transparent)',
+            backgroundSize: '200% 100%',
+            animation: 'flowAndPulse 3s ease-in-out infinite',
+            borderRadius: '50%',
+            filter: 'blur(0.3px)'
           }}></span>
         </h1>
 
@@ -60,27 +104,22 @@ function App() {
           <a href="/contact" style={navLinkStyle}>Contato</a>
         </nav>
       </header>
-
+      
       <main style={{
         position: 'relative',
         paddingTop: '180px',
         minHeight: '100vh',
         zIndex: 1
       }}>
-        {/* Seu conteúdo */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/collection" element={<Collection />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </main>
-    </>
+    </Router>
   );
 }
-
-const navLinkStyle = {
-  color: 'var(--diamond-primary)',
-  textDecoration: 'none',
-  fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-  letterSpacing: '0.2rem',
-  position: 'relative',
-  padding: '0.5rem 1rem',
-  transition: 'all 0.4s ease-out'
-};
 
 export default App;
