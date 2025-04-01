@@ -2,7 +2,7 @@
 
 Um site moderno e elegante para a Luxury Timepieces, especializado em relógios de luxo.  
 
-🔗 **Acesse o projeto:** [Luxury Timepieces na Vercel]((https://front-n1-ysbv.vercel.app))  
+🔗 **Acesse o projeto:** https://front-n1-ysbv.vercel.app
 
 ---
 
