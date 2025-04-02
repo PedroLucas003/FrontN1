@@ -12,8 +12,15 @@ Um e-commerce elegante e responsivo especializado em relógios de alta qualidade
 - Frontend: React, React Router
 - Estilização: CSS moderno (Grid, Flexbox, animações)
 - Ícones: React Icons (Font Awesome)
-- Deploy: (Vercel/GitHub Pages - )
+- Deploy: (Vercel/GitHub Pages - https://front-n1-ysbv.vercel.app/ )
 
+
+--------------------------------------------------------------------------
 ⚙️ Como Executar
+- Clone o repositório - https://github.com/PedroLucas003/FrontN1.git
+- Instale as dependências: npm install
+- Inicie o frontend: npm run dev
 
-- 
+
+Desenvolvido com por [DevP]
+www.linkedin.com/in/pedro-lucas-63b9122b6
