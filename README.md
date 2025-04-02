@@ -22,5 +22,5 @@ Um e-commerce elegante e responsivo especializado em relógios de alta qualidade
 - Inicie o frontend: npm run dev
 
 
-Desenvolvido com por [DevP]
+Desenvolvido por [DevP]
 www.linkedin.com/in/pedro-lucas-63b9122b6
